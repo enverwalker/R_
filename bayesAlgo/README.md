@@ -29,12 +29,12 @@
 
 Для классифицируемого объекта вычисляются _функции правдоподобия_ каждого из классов, по ним вычисляются _апостериорные вероятности_ классов. Объект относится к тому классу, для которого _апостериорная вероятность_ максимальна.  
 
-<img src="https://github.com/boername/Machine/blob/master/pict/bayes1.gif" width="270"> 
+<img src="https://github.com/enverwalker/R_/blob/master/bayesAlgo/img/bayes1.gif" width="270"> 
 
 Алгоритм **a(x)** называется **оптимальным байесовским решающим правилом**, где   
 **P(y)** - _априорные вероятности_ классов,   
 **p(x|y)** - _функции правдоподобия_,  
-<img src="https://github.com/boername/Machine/blob/master/pict/lambday.gif"> - _величина потери_ алгоритмом **а** при неправильной классификации объекта класса **y**  
+<img src="https://github.com/enverwalker/R_/blob/master/bayesAlgo/img/lambday.gif"> - _величина потери_ алгоритмом **а** при неправильной классификации объекта класса **y**  
 
 _иными словами_:   
 По известному вектору признаков - **x**, мы определяем класс **y**, к которому принадлежит объект из **a(x)** по формуле:   
@@ -60,7 +60,7 @@ naiveb = function(x, Py, Mo, covar, m, n) {
 }
 ```
 #### Карта классификации:
-![](https://github.com/boername/Machine/blob/master/pict/naiveb.PNG)  
+![](https://github.com/enverwalker/R_/blob/master/bayesAlgo/img/naiveb.PNG)  
 
 ### Подстановочный алгоритм  
 Он же __Plug-in__, является _байесовским_ алгоритмом классификации, в котором для восстановления плотностей используется модель _многомерного нормального распределения_:  
@@ -82,5 +82,5 @@ Sigma2 <- matrix(c(1, 0, 0, 5), 2, 2)
 Mu1 <- c(1, 0)
 Mu2 <- c(15, 0)
 ```  
-![](https://github.com/boername/Machine/blob/master/pict/Plugin.PNG)  
+![](https://github.com/enverwalker/R_/blob/master/bayesAlgo/img/Plugin.PNG)  
 Его реализация __здесь:__ [Plug-in](code/Plug-in.R)  
