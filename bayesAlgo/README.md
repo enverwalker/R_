@@ -84,3 +84,4 @@ Mu2 <- c(15, 0)
 ```  
 ![](https://github.com/enverwalker/R_/blob/master/bayesAlgo/img/Plugin.PNG)  
 Его реализация __здесь:__ [Plug-in](code/Plug-in.R)  
+**[shiny](https://enverwalker.shinyapps.io/plug-in/)**
