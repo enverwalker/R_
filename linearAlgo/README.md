@@ -71,5 +71,101 @@ __! Стоит задача__ подобрать оптимальный вект
 2) Веса обновляются по такому правилу:  
 ![](http://latex.codecogs.com/svg.latex?w%3Dw-%5Ceta%28%5Clangle%20w%2Cx_i%20%5Crangle-y_i%29x_i).  
 
-Обучение ADALINE заключается в подборе наилучших значений вектора весов *w* с помощью функционала потерь.  
-**[shiny](https://enverwalker.shinyapps.io/adalinehebb/)**
+Обучение ADALINE заключается в подборе наилучших значений вектора весов *w* с помощью функционала потерь. 
+### Правило Хебба
+Правило Хебба также является линейным алгоритмом.
+Алгоритм использует кусочно-линейную функцию потерь: ![](img/hebbloss.png),\
+и правило Хебба для обновления весов: ![](img/hebbupd.png)
+## Реализация на R
+Так как для обоих алгоритмов будет использоваться метод стохастического
+градиента, то вынесем отдельно функции потерь и обновления весов, а затем
+подставим их в стохастический градиент.
+
+Готовая реализация описанного алгоритма на **shiny** доступна по **[ссылке](https://enverwalker.shinyapps.io/adalinehebb/)**.
+```R
+# Квадратичная функция потерь для ADALINE
+adaLoss <- function(xi, yi, w) {
+  mi <- c(crossprod(w, xi)) * yi
+  l <- (mi - 1)^2
+  return(l)
+}
+# дельта правило обновления для ADALINE
+adaUpd <- function(xi, yi, w, eta) {
+  wx <- c(crossprod(w, xi))
+  #ld <- 2 * (wx - yi) * xi
+  ld <- (wx - yi) * xi
+  nextW <- w - eta * ld
+  return(nextW)
+}
+
+# Кусочно-линейную функцию потерь для Хебба
+hebbLoss <- function(xi, yi, w) {
+  mi <- c(crossprod(w, xi)) * yi
+  return (max(-mi, 0))
+}
+# правило Хебба для весов
+hebbUpd <- function(xi, yi, w, eta) {
+  nextW <- w + eta * yi * xi
+  return (nextW)
+}
+
+## Стохастический градиент
+stgrad <- function(xl, eta = 1, lambda = 1/6, eps = 1e-5, loss, upd, ...) {
+  l <- dim(xl)[1]
+  n <- dim(xl)[2] - 1
+  w <- rep(0.5, n)
+  
+  Q <- 0
+  Qprev <- Q
+  
+  # Начальное значение Q
+  for (i in seq(l)) {
+    xi <- xl[i, 1:n]
+    yi <- xl[i, n+1]
+    
+    Q <- Q + loss(xi, yi, w)
+  }
+  
+  iter <- 0
+  repeat {
+    # мало ли, бесконечный цикл может быть
+    iter <- iter + 1
+    if (iter > 1000) {
+      break
+    }
+    
+    mis <- array(dim = l)
+    for (i in seq(l)) {
+      xi <- xl[i, 1:n]
+      yi <- xl[i, n + 1]
+      
+      mis[i] <- crossprod(w, xi) * yi
+    }
+    
+    errorIndexes <- which(mis <= 0)
+    if (length(errorIndexes) == 0) {
+      break
+    }
+    
+    i <- sample(errorIndexes, 1)
+    xi <- xl[i, 1:n]
+    yi <- xl[i, n + 1]
+    
+    ex <- loss(xi, yi, w)
+    
+    w <- upd(xi, yi, w, eta)
+    
+    Q <- (1 - lambda) * Q + lambda * ex
+    # достигли стабилизация Q
+    if (abs(Q - Qprev) < eps) {
+      break
+    }
+    Qprev <- Q
+    
+    drawLine(w, ...)
+  }
+  
+  return(w)
+}
+
+```
