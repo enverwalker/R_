@@ -1,26 +1,11 @@
 # СМПР
 ## Метрические алгоритмы
-1. ### [Метод kNN и kwNN](/lab1)
-1. ### [Метод Парзеновского окна](/lab2)
-1. ### [Метод Потенциальных функций](/lab3)
-1. ### [Алгоритм STOLP](/lab4)
-## Сравнение точности метрических алгоритмов
-Название | Значение параметров | Точность
-:-------:|:-------------------:|:-------:
-Метод kNN | k=6 | LOO=0.0333 ~ 97%
-Метод kwNN | k=6, q=1 | LOO=0.0333 ~ 97%
-Метод Парзеновского окна | (ядро Епанечникова) h=0.35 | LOO=0.04 ~ 96%
-Метод Парзеновского окна | (ядро Квартическое) h=0.35 | LOO=0.04 ~ 96%
-Метод Парзеновского окна | (ядро Треугольное) h=0.35 | LOO=0.04 ~ 96%
-Метод Парзеновского окна | (ядро Гауссовское) h=0.1 | LOO=0.04 ~ 96%
-Метод Парзеновского окна | (ядро Прямоугольное) h=0.35 | LOO=0.04 ~ 96%
-Метод Потенциальных функций | h=(1х50, 0.5х100) | Переменная
+1. ### [Метод kNN и kwNN](/metricAlgo)
 
 ## Байесовские алгоритмы
-1. ### [Линии уровня](/lab5) (**[shiny](https://skycolor.shinyapps.io/ML0BayesLevelLines/)**)
-1. ### [Наивный байесовский классификатор](/lab6) (**[shiny](https://skycolor.shinyapps.io/ML0NaiveBayes/)**)
-1. ### [Подстановочный (plug-in) алгоритм](/lab7) (**[shiny](https://skycolor.shinyapps.io/ML0PlugInAlgo/)**)
-1. ### [Линейный дискриминант Фишера (LDF)](/lab8) (**[shiny](https://skycolor.shinyapps.io/ML0LDF/)**)
+1. ### [Линии уровня](/bayesAlgo/) (**[shiny](https://enverwalker.shinyapps.io/normallines/)**)
+1. ### [Наивный байесовский классификатор](/bayesAlgo/) (**[shiny](https://enverwalker.shinyapps.io/naivebayes/)**)
+1. ### [Подстановочный (plug-in) алгоритм](/bayesAlgo/) (**[shiny](https://enverwalker.shinyapps.io/plug-in/)**)
 
 ## Линейные алгоритмы
-1. ### [ADALINE и правило Хебба](/lab9) (**[shiny](https://skycolor.shinyapps.io/ML0ADALINE/)**)
+1. ### [ADALINE и правило Хебба](/linearAlgo/) (**[shiny](https://enverwalker.shinyapps.io/adalinehebb/)**)
