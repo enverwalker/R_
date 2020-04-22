@@ -42,7 +42,7 @@ kNN <- function(xl, z, k)
 }
 ```
 #### Карта классификации:
-![](https://github.com/boername/Machine/blob/master/pict/pict_KNN2.PNG)
+![](https://github.com/enverwalker/R_/blob/master/metricAlgo/img/pict_KNN2.PNG)
 
 ### Алгоритм 1NN
 Алгоритм 1NN является частным случаем KNN. При его использовании аналогичным образом измеряется расстояние от классифицируемого объекта  z до всех элементов обучающей выборки Xl. Далее происходит сортировка этих расстояний. В качестве ответа(класса) выводится тот класс, элемент которого явлется самым ближайшим к классифицируемому.   
@@ -66,7 +66,7 @@ nn <- function(z, xl)
 }
 ```
 #### Карта классификации:
-![](https://github.com/boername/Machine/blob/master/pict/pict_1NN2.PNG)
+![](https://enverwalker/R_/blob/master/metricAlgo/img/pict_1NN2.PNG)
 
 ### Алгоритм KwNN
 Метод KwNN по своей сути является модернизированным алгоритмом KNN, он заключается в следующем:
@@ -107,4 +107,4 @@ kwNN <- function(xl, z, k, q)
 }
 ```
 #### Карта классификации:
-![](https://github.com/boername/Machine/blob/master/pict/pict_KwNN.PNG)
+![](https://enverwalker/R_/blob/master/metricAlgo/img/pict_KwNN.PNG)
